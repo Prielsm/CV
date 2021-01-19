@@ -1,127 +1,198 @@
 @use "variables" as *;
 
 .hidden {
-    display: none;
+  display: none;
 }
 
-html, body {
-    font-size: 16px;
-    padding: 0;
-    margin: 0;
+html,
+body {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-h1 {
-    font-size: 2rem; //égal au double de la taille du font du body
-    //si on utilise em, c'est par rapport au font size du contenair
-}
-  
-.littleFont {
-    font-size: 18px;
-}
-
+// ---------------------------background home page night/day------------------------------
+// home page night
 body.night {
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);   
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 
+  span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
+// home page day
 body.day {
   background: #ffc3a0;
-
-
+  span {
+    color: white;
+  }
 }
 
+//----------------------body css-------------------------
 body {
-    // overflow: hidden; 
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    height: 100%;
-    text-align: center;
+  z-index: -1;
+  // overflow: hidden;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  height: 100%;
+  text-align: center;
 
+  // ----------------background en général---------------
+  .bg {
+    .littleFont {
+      font-size: 1rem;
+    }
+    #title {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+
+      color: #fff;
+      text-align: center;
+      font-family: "lato", sans-serif;
+      font-weight: 300;
+      font-size: 2.5rem;
+      letter-spacing: 10px;
+
+      margin-top: -60px;
+      padding-left: 10px;
+    }
+  }
+
+  //---------------variables main mode night------------------------
+  .night-main {
+    background-color: $background_nightmode;
+    color: white;
+
+    .mode {
+      background-color: $button_nightmode;
+      &:hover {
+        background-color: $button_nightmode_hover;
+      }
+    }
+  }
+
+  //---------------variables main mode day------------------------
+  .day-main {
+    background-color: $background_daymode;
+    color: black;
+
+    .mode {
+      background-color: $button_daymode;
+      &:hover {
+        background-color: $button_daymode_hover;
+      }
+    }
+
+    #Tracé_2,
+    #Tracé_3,
+    #Tracé_4,
+    #Tracé_5,
+    #Tracé_6,
+    #Tracé_7,
+    #Tracé_8,
+    #Tracé_9,
+    #Tracé_10 {
+      stroke: black;
+    }
+
+    #Icon_awesome-moon {
+      stroke: black;
+    }
+  }
+
+  //------------------------main en général------------------------
+  main {
+    z-index: 1;
+    position: relative;
     h1 {
-        padding: 50px;
+      padding: 50px;
+      font-size: 2rem; //égal au double de la taille du font du body
+      //si on utilise em, c'est par rapport au font size du contenair
     }
 
-    .night {
-        background-color: $background_nightmode;
-        color: white;
-
-        .mode {
-            background-color: $button_nightmode;
-            &:hover{
-                background-color: $button_nightmode_hover;
-            }
-        }
-    }
-
-    .day {
-        background-color: $background_daymode;
-        color: black;
-
-        .mode {
-            background-color: $button_daymode;
-            &:hover{
-                background-color: $button_daymode_hover;
-            }
-        }
-
-        #Tracé_2, #Tracé_3, #Tracé_4, #Tracé_5, #Tracé_6, #Tracé_7, #Tracé_8, #Tracé_9, #Tracé_10  {
-            stroke: black;
-        }
-        
-        #Icon_awesome-moon {
-            stroke: black;
-        }
-    }
-    
-    
-}
-main {
-    
-
-    height: 3000px;
+    height: 100%;
     margin-top: 100vh;
     position: relative;
 
+    // ----BOUTONS MODE DAY OR NIGHT----
     .mode {
-        border: none;
-        border-radius: 5px;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        
-        
+      border: none;
+      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      position: absolute;
     }
 
     .day-mode {
-        top: 30px;
-        right: 30px;
+      top: 30px;
+      right: 30px;
     }
 
     .night-mode {
-        top: 30px;
-        right: 90px;
-        
+      top: 30px;
+      right: 90px;
     }
 
+    // ---------------GRID RESPONSIVE-----------------
+    .line-container {
+      z-index: 2;
+      // position: fixed;
+      background-color: blue;
+      height: 100%;
+      width: 80vw;
+
+      //   animation-name: grid-animation;
+      //   animation-duration: 3s;
+      //   animation-fill-mode: forwards;
+    }
+  }
 }
-
-
 
 section {
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-    overflow: hidden;
-    // position: absolute;
-    position: fixed;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  // position: absolute;
+  position: fixed;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
 }
 
+// --------------------------media queries-----------------------------------
+// A partir du petit écran
+@media screen and (min-width: $sd) {
+  body {
+  }
+}
 
+// A partir du moyen
+@media screen and (min-width: $lg) {
+  body {
+    .littleFont {
+      font-size: 18px;
+    }
+    #title {
+      font-size: 3.3rem;
+    }
+  }
+}
+
+@media screen and (min-width: $xl) {
+  body {
+    .line-container {
+      margin: 0 10%;
+    }
+  }
+}

@@ -189,6 +189,11 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"style/fireflies.sass":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"style/main.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -199,9 +204,10 @@ module.hot.accept(reloadCSS);
 
 require("./style/stars.sass");
 
+require("./style/fireflies.sass");
+
 require("./style/main.scss");
 
-// import './style/fireflies.sass';
 // Background Day Mode
 var quantity = 15;
 
@@ -216,14 +222,16 @@ var buttonsMode = document.body.querySelectorAll('.mode');
 buttonsMode.forEach(function (buttonMode) {
   buttonMode.addEventListener('click', function (event) {
     if (event.currentTarget.id === 'night-mode') {
-      main.className = 'night';
+      main.className = 'night-main';
+      document.body.className = 'night';
       console.log(main.className);
     } else {
-      main.className = 'day';
+      main.className = 'day-main';
+      document.body.className = 'day';
     }
   });
 });
-},{"./style/stars.sass":"style/stars.sass","./style/main.scss":"style/main.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./style/stars.sass":"style/stars.sass","./style/fireflies.sass":"style/fireflies.sass","./style/main.scss":"style/main.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -251,7 +259,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60682" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56420" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

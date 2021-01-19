@@ -1,5 +1,5 @@
 import './style/stars.sass';
-// import './style/fireflies.sass';
+import './style/fireflies.sass';
 import './style/main.scss';
 
 // Background Day Mode
@@ -17,10 +17,12 @@ const buttonsMode = document.body.querySelectorAll('.mode');
 buttonsMode.forEach((buttonMode) => {
   buttonMode.addEventListener('click', (event) => {
     if (event.currentTarget.id === 'night-mode') {
-      main.className = 'night';
+      main.className = 'night-main';
+      document.body.className = 'night';
       console.log(main.className);
     } else {
-      main.className = 'day';
+      main.className = 'day-main';
+      document.body.className = 'day';
     }
   });
 });
